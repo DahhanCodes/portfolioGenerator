@@ -12,9 +12,8 @@ console.log(personObj)
 //Arrow functions replace the normal function statement
 //Arrow function can't be used as the main functions
 const printProfileData = (profileDataArr) => {
-    profileDataArr.forEach((profileItem) => {
-        console.log(profileItem)
-    });
+    profileDataArr.forEach(profileItem => 
+        console.log(profileItem));
     };
 printProfileData([personObj]);
 //example
