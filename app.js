@@ -116,10 +116,18 @@ const promptProject = portfolioData => {
         },
 
         {
-            type: 'checkbox',
-            name: 'languagesUsed',
-            message: 'Which coding languages and technologies have you used for this project?',
-            choices:['javaScript', 'HTML5', 'CSS', 'ES6','jQuery', 'BootStrap', 'Node', 'AXIOS', 'APIs']
+            type: 'input',
+            name: 'tableContents',
+            message: 'Enter section titles',
+            validate: descripInput => {
+                if (descripInput){
+                    return true
+                }
+                else{
+                    console.log('Please enter a desription for the project!')
+                    return false
+                }
+            }
         },
 
         {
@@ -158,10 +166,23 @@ const promptProject = portfolioData => {
 promptUser()
     .then(promptProject)
     .then(portfolioData => {
+        
+            const pageHtml = generatePage(portfolioData)
+            fs.writeFile('./index.html', pageHtml, err => 
+            {
+        //if error exists show error message
+        //err is an object
+        //the object can have a name for the error and a type 
+        //IMPORTANT TO KNOW
+        if(err) throw err; 
+        console.log('Portfolio complete! Check out index.html to see the output!')
+    })
+
         console.log(portfolioData);
     })
     
-    
+const fs = require('fs');
+const generatePage = require('./src/page-template.js')    
     
     
     
@@ -186,10 +207,9 @@ promptUser()
 // //file system require
 // //built it no need for an installation
 // // only packages require installation
-// const fs = require('fs');
-// const generatePage= require('./src/page-template.js')
+
 // //asda
-// const pageHtml = (userName, gitHub, email, cell, about)
+//const pageHtml = generatePage()
 // //======================================================================================================
 // //slice returns everything from the returns everything from and including the first argument up until but not including the second argument
 // //const profileDataArgs = process.argv.slice(2);
@@ -202,16 +222,16 @@ promptUser()
 
 
 
-// fs.writeFile('./index.html', generatePage(userName,gitHub,email,cell), err => 
-// {
-//     //if error exists show error message
-//     //err is an object
-//     //the object can have a name for the error and a type 
-//     //IMPORTANT TO KNOW
-//     if(err) throw err; 
-//     console.log('Portfolio complete! Check out index.html to see the output!')
-// })
-// //===
+//fs.writeFile('./index.html', generatePage(userName,gitHub,email,cell), err => 
+//{
+    //if error exists show error message
+    //err is an object
+    //the object can have a name for the error and a type 
+    //IMPORTANT TO KNOW
+    //if(err) throw err; 
+    //console.log('Portfolio complete! Check out index.html to see the output!')
+//})
+//===
 
 
 

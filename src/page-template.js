@@ -2,7 +2,9 @@
 //can make it more dynamic by adding arguments to the function expression
 //Interpolation is the substitution of text for a variable we build into a string
 // ' ` ' is used to embed js expressions into the string 
-const generatePage= (firstName, gitHubName, eMail, phone) => {
+
+module.exports = templateData => {
+    console.log(templateData)
     // the ' ` ' has to be on the same line as the return or it wont work
     return `
     <!DOCTYPE html>
@@ -37,4 +39,3 @@ const generatePage= (firstName, gitHubName, eMail, phone) => {
     `;
  
 };
-module.exports= generatePage;
